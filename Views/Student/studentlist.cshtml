@@ -1,0 +1,30 @@
+﻿@* 调用实体类时要引入命名空间   *@
+@*@using StudentManager.Models或者在视图webconfig中<add namespace>或者*@
+@using StudentManager.Models
+@model Student
+@* 在视图中穿插代码要用@标记
+    @model表示引入，使用时用Model
+*@
+@{
+    ViewBag.Title = "studentlist";
+    Student stu2 = ((Student)ViewData["Student"]);@* ViewData类型转换 *@
+}
+
+<h2>studentlist</h2>
+<ul>
+    @foreach(var item in ViewBag.stuList)
+    {
+        <li>@item.id</li>
+    }
+</ul>
+<h4>id=@Model.id</h4>
+<h4>age=@Model.age</h4>
+<h4>name=@Model.name</h4>
+<br />
+@* ViewData 
+    ViewBag与ViewData可以互相访问，ViewBag的实现包括了ViewData
+    ViewData字典传值是Object类型，使用的时候要类型转换
+    *@
+<h4>VD_id=@stu2.id</h4>
+<h4>VD_age=@stu2.age</h4>
+<h4>VD_name=@stu2.name</h4>

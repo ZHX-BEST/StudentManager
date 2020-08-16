@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+<div id="result">节点渲染测试</div>
+<button>点击显示效果</button>
+
+@section scripts{
+    <script type="text/javascript">
+        $("button").click(function () {
+            $("#result").load("/Home/About")
+        });
+    </script>
+    }
+@* 直接插入的视图会插入在RenderBody的位置，会导致<scripts>的调用出现在jquary的引入之前，所以需要用RenderSection
+    （见布局页）
+    *@
+

@@ -1,0 +1,36 @@
+﻿@model StudentManager.Models.Student
+@*引入实体类，使用的时候Model*@
+@{
+    ViewBag.Title = "Index";
+    int[] num = new int[5] { 5, 4, 3, 2, 1 };
+    string Show()
+    {
+        return "C#方法表达式";
+    }
+    int a = 1;
+    int b=2;
+    HtmlString htmlString = new HtmlString("<font color='red'>这是一段Html代码</font>");
+}
+
+<h2>Razor模板视图引擎</h2>
+@* Razor语法练习
+    1·@model引入实体类，使用的时候Model
+    2·C#代码用@标记@{}中的代码分两种：带关键字、不带关键字（@()），@代码表达式
+    3·邮箱地址会自动识别
+    4·@@表示@
+    5·文字显示：@:单行文字    <text>多行文字</text>
+    6·@using 命名空间 引入命名空间 
+    7·打印Html代码
+*@
+@for(int i = 0; i < 5; i++)
+{
+    <a>这是第@(i)行</a><br />
+}
+@foreach(var item in num)
+{
+    <a>@item</a>
+}
+<h3>@Show()</h3>
+<h3>@(a+b)</h3>
+@htmlString</br>
+@Html.Raw("也可以直接添加字符串")
